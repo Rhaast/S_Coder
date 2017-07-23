@@ -1,4 +1,4 @@
-﻿{
+{
     "@platforms": ["android", "iPhone", "iPad"],
     "id": "H50BB4D3C",/*应用的标识，创建应用时自动生成，勿手动修改*/
     "name": "S_Coder",/*应用名称，程序桌面图标名称*/
@@ -199,5 +199,43 @@
                 }
             }
         }
-    }
+    },
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"img/banner_1 (2).jpg",
+					"css/new_file.css",
+					"js/hammer.js",
+					"css/bootstrap.css",
+					"img/index_xiaotouxiang.jpg",
+					"img/banner_1 (3).jpg",
+					"img/banner_1 (1).jpg",
+					"img/banner_1 (4).jpg",
+					"img/index_aside.png",
+					"js/jquery-3.1.0.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"css/default.css",
+				"img/person_sex.png",
+				"img/person_touxiang.png",
+				"img/bg_01.jpg",
+				"js/hammer.min.js",
+				"img/person_back.png",
+				"fonts/NotoSansHans-Regular.otf",
+				"img/person_icons_question.png",
+				"js/bootstrap.js",
+				"js/bootstrap.min.js",
+				"person.html",
+				"img/person_icons_note.png",
+				"img/person_cover.jpg",
+				"img/bg_02.jpg"
+			]
+		}
+	}
 }

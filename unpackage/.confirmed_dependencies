@@ -1,0 +1,95 @@
+{
+  "index.html": {
+    "resources": [
+      "img/index_xiaotouxiang.jpg",
+      "js/mui.min.js",
+      "img/shuijiao.jpg",
+      "fonts/mui.ttf",
+      "img/muwu.jpg",
+      "img/yuantiao.jpg",
+      "img/index_aside.png",
+      "img/cbd.jpg",
+      "css/mui.css",
+      "css/mui.style.css",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "img/person_sex.png",
+      "img/person_touxiang.png",
+      "img/bg_01.jpg",
+      "img/person_back.png",
+      "img/person_icons_question.png",
+      "img/person_icons_note.png",
+      "img/person_cover.jpg",
+      "img/bg_02.jpg"
+    ],
+    "refer": []
+  },
+  "login.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "img/login_bg.png",
+      "css/mui.style.css",
+      "login.html",
+      "fonts/mui.ttf",
+      "js/jquery-3.2.1.min.js"
+    ],
+    "refer": [
+      "login.html",
+      "total.html",
+      "reg.html"
+    ]
+  },
+  "total.html": {
+    "resources": [
+      "img/person_sex.png",
+      "img/shuijiao.jpg",
+      "img/person_touxiang.png",
+      "img/bg_01.jpg",
+      "img/person_back.png",
+      "css/new_file.css",
+      "img/person_icons_question.png",
+      "css/app.css",
+      "img/muwu.jpg",
+      "img/yuantiao.jpg",
+      "img/index_aside.png",
+      "img/person_icons_note.png",
+      "img/person_cover.jpg",
+      "img/bg_02.jpg",
+      "img/cbd.jpg",
+      "img/index_nc.png",
+      "fonts/mui.ttf",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "mynotes.html"
+    ],
+    "refer": [
+      "mynotes.html"
+    ]
+  },
+  "mynotes.html": {
+    "resources": [
+      "total.html",
+      "css/mynotes.css",
+      "img/mynotes_bg.jpg",
+      "js/jquery-3.2.1.min.js"
+    ],
+    "refer": [
+      "total.html",
+      "addNote.html"
+    ]
+  },
+  "reg.html": {
+    "resources": [
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "total.html"
+    ]
+  },
+  "addNote.html": {
+    "resources": [
+      "js/app.js"
+    ]
+  }
+}

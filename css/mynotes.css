@@ -1,0 +1,71 @@
+/*ss重置样式  */
+body,div,i,a,p,span,b,input,h1,h2,h3,h4,h5,h6,ul,ol,dl,li,dd,dt,textarea,img{margin:0;padding:0;}
+body{font-family: microsoft yahei;color:#333;}
+i,b,em{font-style: normal;}
+a{text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+img{vertical-align:top;width: 100%;}
+input,textarea,select,textarea,img,a{resize: none;outline: none;border: none;}
+li{list-style: none}
+h1,h2,h3,h4,h5,h6,{font-weight: normal;}
+.clearfix:after{content: '';display: block;height:0;clear: both;font-size:0;*zoom:1}
+@font-face {
+            font-family: NotoSansHans-Regular;
+            src: url("fonts/NotoSansHans-Regular.otf");
+        }
+
+#index{width: 100%;height: 100%;}
+.header{position: relative;}
+.header .cover{position: absolute;top:0;}
+.header .back{width:5%;position: absolute;top: 4%;left: 3%;}
+.header .h1{font-family: arial;color:#5272f9;text-transform: uppercase;font-weight: 600;font-size: 30px;letter-spacing: 3px;position: absolute;top: 75%;left: 3%;}
+.header p{font-family:"NotoSansHans-Regular";font-size: 12px;color: #999;position: absolute;top: 30%;left: 3%;}
+.header .touxiang{width:20%;position: absolute;top: 40%;left: 3%;}
+.header .message{width:100%;margin: 0 auto;position: absolute;top: 77%;left:50%;margin-left: -50%;}
+.header .message .l{width: 33%;text-align: center;float: left;}
+.header .message h2{font-family:"NotoSansHans-Regular";font-size: 14px;color: #5272F9;margin-bottom: 6px;}
+.header .message em{font-family: "微软雅黑";font-size: 18px;width: 30%;font-weight:600 ;padding-top: 2%;}
+.main{position: relative; width: 100%;}
+
+#title{
+	font-style: normal;
+	position: absolute;
+	left: auto;
+	font-family: "微软雅黑";font-size: 18px;width: 30%;font-weight:600 ;padding-top: 2%;
+	z-index: 99;
+	left: 140px;
+	top: 5px;
+}
+.note_title{
+	font-style: normal;
+	font-family: "微软雅黑";font-size: 18px;width: 30%;font-weight:600 ;padding-top: 2%;
+}
+.note_content,.note_bottom{
+	font-family:"NotoSansHans-Regular";font-size: 16px;color: #999;
+}
+.note,.note_content,.note_bottom,.note_title{
+	padding: 1%;
+}
+.note_bottom {
+	position: relative;
+	font-size: 12px;
+}
+.note_bottom span{
+	position: absolute;
+	right: 1%;
+}
+h3{
+	padding-left: 25%;
+	padding-top: 10%;
+}
+button{
+	    color: #fff;
+    border: 1px solid #4cd964;
+    background-color: #4cd964;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42;
+
+}

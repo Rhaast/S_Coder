@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+		<title>index</title>
+		<style>
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			
+			.oa-contact-content {
+				width: 100%;
+			}
+			
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			
+			.oa-contact-name,
+			oa-contact-position {
+				float: left;
+			}
+			
+			.mui-scroll-wrapper {
+				position: relative;
+				overflow: inherit;
+			}
+			
+			.mui-off-canvas-wrap {
+				overflow: inherit;
+			}
+			
+			.mui-scroll {
+				position: relative;
+			}
+			
+			.xoded {
+				height: 360px;
+			}
+			
+			.mui-icon-bars:before {
+				content: close-quote;
+			}
+			
+			.mui-pull-left {
+				width: 10%;
+			}
+			
+			.mui-bar-tab~.mui-content {
+				height: 100%;
+			}
+			
+			.mui-bar-tab .mui-tab-item.mui-active {
+				color: #5272f9;
+			}
+			
+			.menuicon {
+				width: 14%;
+				padding-right: 10px;
+			}
+		</style>
+	</head>
+
+	<body style="height: 100%;">
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon "><img src="img/index_nc.png"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-chat">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact" name="c3">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+
+		</nav>
+		<div class="mui-content">
+			<div id="tabbar" class="mui-control-content mui-active">
+				<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-scalable">
+					<!--侧滑菜单部分-->
+					<aside id="offCanvasSide" class="mui-off-canvas-left">
+						<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="title">侧滑导航</div>
+								<div class="content">
+
+									<div class="touxiang" style="width: 30%;padding-left: 5%;position: relative;"><img src="img/avatar0.jpg">
+										<span id="nickname" style="color: whitesmoke;position: absolute;right: -190%;z-index: 99;bottom: 5%;">Rhaast</span></div>
+									<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+										<li class="mui-table-view-cell">
+											<a class="mui-navigate-right" href="person.html">
+												<img src="img/person.png" class="menuicon" />个人主页
+											</a>
+										</li>
+										<li class="mui-table-view-cell">
+											<a class="mui-navigate-right">
+												<img src="img/message.png" class="menuicon" />消息
+											</a>
+										</li>
+										<li class="mui-table-view-cell">
+											<a class="mui-navigate-right" href="login.html">
+												<img src="img/person_back.png" class="menuicon" />切换账号
+											</a>
+										</li>
+									</ul>
+								</div>
+								<!--<div class="title" style="margin-bottom: 25px;">侧滑列表示例</div>-->
+
+							</div>
+						</div>
+					</aside>
+					<!--主界面部分-->
+					<div class="mui-inner-wrap">
+
+						<header class="mui-bar mui-bar-nav">
+							<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"><img src="img/index_aside.png"></a>
+							<a class="mui-action-back mui-btn mui-btn-link mui-pull-right">关闭</a>
+							<h1 class="mui-title">Home</h1>
+						</header>
+						<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div id="slider" class="mui-slider">
+									<div class="mui-slider-group mui-slider-loop">
+										<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+										<div class="mui-slider-item mui-slider-item-duplicate">
+											<a href="#">
+												<img src="img/yuantiao.jpg">
+											</a>
+										</div>
+										<!-- 第一张 -->
+										<div class="mui-slider-item">
+											<a href="#">
+												<img src="img/shuijiao.jpg">
+											</a>
+										</div>
+										<!-- 第二张 -->
+										<div class="mui-slider-item">
+											<a href="#">
+												<img src="img/muwu.jpg">
+											</a>
+										</div>
+										<!-- 第三张 -->
+										<div class="mui-slider-item">
+											<a href="#">
+												<img src="img/cbd.jpg">
+											</a>
+										</div>
+										<!-- 第四张 -->
+										<div class="mui-slider-item">
+											<a href="#">
+												<img src="img/yuantiao.jpg">
+											</a>
+										</div>
+										<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+										<div class="mui-slider-item mui-slider-item-duplicate">
+											<a href="#">
+												<img src="img/shuijiao.jpg">
+											</a>
+										</div>
+									</div>
+									<div class="mui-slider-indicator">
+										<div class="mui-indicator mui-active"></div>
+										<div class="mui-indicator"></div>
+										<div class="mui-indicator"></div>
+										<div class="mui-indicator"></div>
+									</div>
+
+								</div>
+								<!--数据列表-->
+								<div class="xoded">
+									<ul class="mui-table-view mui-table-view-chevron">
+										<li class="mui-table-view-cell">
+											<a href="" class="mui-navigate-right">Item 1</a>
+										</li>
+										<li class="mui-table-view-cell">
+											<a href="" class="mui-navigate-right">Item 2</a>
+										</li>
+										<li class="mui-table-view-cell">
+											<a href="" class="mui-navigate-right">Item 3</a>
+										</li>
+										<li class="mui-table-view-cell">
+											<a href="" class="mui-navigate-right">Item 4</a>
+										</li>
+										<li class="mui-table-view-cell">
+											<a href="" class="mui-navigate-right">Item 5</a>
+										</li>
+										<li class="mui-table-view-cell">
+											<a href="" class="mui-navigate-right">Item 6</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div id="tabbar-with-chat" class="mui-control-content">
+				<div class="title">这是div模式选项卡中的第2个子页面，该页面展示一个消息列表</div>
+
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 1</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 2</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 3</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 4</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 5</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 6</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 7</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 8</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 9</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 10</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 11</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 12</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 13</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 14</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 15</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 16</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 17</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 18</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 19</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="" class="mui-navigate-right">Item 20</a>
+					</li>
+				</ul>
+
+			</div>
+			<div id="tabbar-with-contact" class="mui-control-content">
+				<div id="person">
+					<div class="header">
+						<img src="img/bg_01.jpg" />
+						<div class="cover"><img src="img/person_cover.jpg" /></div>
+						<div class="back"><img src="img/person_back.png"></div>
+						<h1 class="h1">Rhaast</h1>
+						<p>请尽情吩咐妲己，主人……</p>
+						<div class="touxiang"><img src="img/person_touxiang.png"></div>
+						<div class="job"><img src="img/person_sex.png">&nbsp;UI设计师</div>
+						<div class="message">
+							<div class="l">
+								<h2>ID：</h2>
+								<em>598652</em>
+							</div>
+							<div class="l">
+								<h2>得分</h2>
+								<em>4</em>
+							</div>
+							<div class="l">
+								<h2>等级</h2>
+								<em>1</em>
+							</div>
+						</div>
+					</div>
+					<div class="main">
+						<img src="img/bg_02.jpg">
+						<h2>我的日程</h2>
+						<div class="schedule">
+							<div class="r">
+								<img src="img/person_icons_note.png">
+								<p class="myNote">
+									<a href="mynotes.html">我的笔记</a>
+								</p>
+							</div>
+							<div class="r">
+								<img src="img/person_icons_question.png">
+								<p class="myNote">
+									<a href="https://www.baidu.com/">我的提问</a>
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div id="tabbar-with-map" class="mui-control-content">
+					<div class="title">这是div模式选项卡中的第4个子页面，该页面展示一个常见的设置示例.</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+							新消息通知
+						</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+							隐私
+						</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+							通用
+						</a>
+						</li>
+					</ul>
+					<ul class="mui-table-view" style="margin-top: 25px;">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+							关于mui
+						</a>
+						</li>
+					</ul>
+					<ul class="mui-table-view" style="margin-top: 25px;">
+						<li class="mui-table-view-cell">
+							<a style="text-align: center;color: #FF3B30;">
+							退出登录
+						</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	
+	<script type="text/javascript" src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script>
+//		mui.init({
+//			swipeBack: true //启用右滑关闭功能
+//		});
+	mui.plusReady(function() { 
+		ifLogin();
+	}); 
+		$(function() {
+			getName();
+		})
+
+		function getName() {
+			var nickname = localStorage.getItem("nickName");
+			$("#nickname").html(nickname);
+			var portrait = localStorage.getItem("portrait");
+			$(".touxiang img").attr("src", portrait);
+		}
+	</script>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>login</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/mui.style.css">
+		<style>
+			::-moz-placeholder {
+				color: #000;
+				font-weight: 600;
+			}
+			
+			::-webkit-input-placeholder {
+				color: #000;
+				font-weight: 600;
+			}
+			
+			:-ms-input-placeholder {
+				color: #000;
+				font-weight: 600;
+			}
+			
+			#username {
+				margin-left: 4%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<img src="img/login_bg.png" class="login_bg">
+			<h2>s_coder</h2>
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<input id='username' type="username" class="mui-input-clear mui-input" placeholder="username" required="required">
+				</div>
+				<div class="mui-input-row">
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="password" required="required">
+				</div>
+
+				<div class="link-area">
+					<a id='reg' href="reg.html"> sign up</a>
+				</div>
+				<div class="mui-content-padded">
+					<button id='login' class="mui-btn mui-btn-block mui-btn-primary">Login</button>
+				</div>
+
+				<div class="mui-content-padded oauth-area">
+
+				</div>
+			</form>
+
+		</div>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+		<script type="text/javascript">
+			(function($, doc, $$) {
+				$.init();
+				$.ready(function() {
+					var cityPicker = new $.PopPicker({
+						layer: 2
+					});
+
+					$.ajax({
+						type: 'POST',
+						url: '@Url.Action("GetSelectList","Banji")',
+						data: '',
+						dataType: 'json',
+						success: function(data) {
+							cityPicker.setData(data);
+						},
+						error: function() {
+							alert('error');
+						}
+					});
+
+					var showCityPickerButton = doc.getElementById('showCityPicker');
+					var cityResult = doc.getElementById('cityResult');
+					var students = doc.getElementById('students');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							cityResult.innerText = "" + items[0].text + "->" + items[1].text;
+							$$('#students').html('');
+							$.ajax({
+								type: 'POST',
+								url: '@Url.Action("GetSelectList","Student")',
+								data: {
+									banjiId: items[1].value
+								},
+								dataType: 'json',
+								success: function(data) {
+									console.log(data);
+									var str = '';
+									data.forEach(function(e) {
+										str += '<li class="mui-table-view-cell mui-checkbox mui-left"><input name="checkbox" type="checkbox" value="' + e.value + '">' + e.text + '</li>';
+									})
+									$$('#students').html(str);
+								},
+								error: function() {
+									alert('error');
+								}
+							});
+
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+
+				});
+			})(mui, document, jQuery);
+
+			mui('body').on('tap', 'button', function() {
+				var username = $("#username").val().trim();
+				var password = $("#password").val().trim();
+				if (!username || username == '') {
+					mui.alert("用户名不允许为空");
+					return;
+				}
+				if (!password || password == '') {
+					mui.alert("密码不允许为空");
+					return;
+				}
+				var loginUrl = "http://112.74.187.146:8080/studyapp/user/login";
+				$.post(loginUrl, {
+						"username": username,
+						"password": password
+					},
+					function(result) {
+						if (result.result == 200) {
+							//var id = this.getAttribute('href');
+							localStorage.setItem("userId", result.detail.id);
+							localStorage.setItem("password", password);
+							localStorage.setItem("userName", result.detail.userName);
+							localStorage.setItem("nickName", result.detail.nickName);
+							localStorage.setItem("level", result.detail.level);
+							localStorage.setItem("score", result.detail.score);
+							localStorage.setItem("portrait", result.detail.portrait);
+							var webview_style = {
+								popGesture: "close"
+							};
+							mui.openWindow({
+								id: "total",
+								url: "total.html",
+								styles: webview_style,
+								show: {
+									aniShow: true
+								},
+								waiting: {
+									autoShow: true
+								}
+							});
+						} else {
+							mui.alert("用户名或密码认证错误！");
+						}
+					})
+
+			})
+
+			mui('body').on('tap', 'a', function() {
+				var id = this.getAttribute('href');
+				var webview_style = {
+					popGesture: "close"
+				};
+				mui.openWindow({
+					id: id,
+					url: this.href,
+					styles: webview_style,
+					show: {
+						aniShow: true
+					},
+					waiting: {
+						autoShow: true
+					}
+				});
+			})
+		</script>
+	</body>
+
+</html>

@@ -37,7 +37,7 @@ h1,h2,h3,h4,h5,h6,{font-weight: normal;}
 }
 .note_title{
 	font-style: normal;
-	font-family: "微软雅黑";font-size: 18px;width: 30%;font-weight:600 ;padding-top: 2%;
+	font-family: "微软雅黑";font-size: 18px;width: 100%;font-weight:600 ;padding-top: 2%;
 }
 .note_content,.note_bottom{
 	font-family:"NotoSansHans-Regular";font-size: 16px;color: #999;

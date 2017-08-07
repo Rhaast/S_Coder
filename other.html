@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>person</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0;" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+	</head>
+
+	<body style="background-color: #fff;">
+		<div id="person">
+			<div class="header">
+				<img src="img/bg_01.jpg" />
+				<div class="cover"><img src="img/person_cover.jpg" /></div>
+				<div class="back" onclick="mui.back()"><img src="img/person_back.png"></div>
+				<h1 class="h1"></h1>
+				<p>请尽情吩咐妲己，主人……</p>
+				<div class="touxiang"><img src="img/person_touxiang.png"></div>
+				<div class="job"><img src="img/person_sex.png">&nbsp;UI设计师</div>
+				<div class="message">
+					<div class="l">
+						<h2>ID：</h2>
+						<em>598652</em>
+					</div>
+					<div class="l">
+						<h2>得分</h2>
+						<em id="score">4</em>
+					</div>
+					<div class="l">
+						<h2>等级</h2>
+						<em id="level">1</em>
+					</div>
+				</div>
+			</div>
+			<div class="main">
+				<img src="img/bg_02.jpg">
+				<h2>动态</h2>
+				<div class="schedule">
+					<div class="r">
+						<img src="img/person_icons_note.png">
+						<p class="myNote">
+							<a href="mynotes.html">笔记</a>
+						</p>
+					</div>
+					<div class="r">
+						<img src="img/person_icons_question.png">
+						<p class="myNote">
+							<a href="https://www.baidu.com/">提问</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript">
+			document.addEventListener('plusready', function() {
+				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+
+			});
+	mui.plusReady(function() { 
+		ifLogin();
+	}); 
+	var id;
+			$(function() {
+				id=getUrlParam("id");
+				getMine();
+			})
+			var username;
+			//取得自己的笔记
+			function getMine() {
+				var mineUrl = "http://112.74.187.146:8080/studyapp/user/findById/" + id;
+				$.get(mineUrl, function(result) {
+						var nickName =result.detail.nickName;
+						var score = result.detail.score;
+						var level = result.detail.level;
+						var portrait = result.detail.portrait;
+						$(".h1").html(nickName);
+						$("#score").html(score);
+						$("#level").html(level);
+						$(".touxiang img").attr("src", portrait);
+				})
+
+			}
+			mui.init();
+			
+		</script>
+	</body>
+
+</html>

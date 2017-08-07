@@ -1,0 +1,29 @@
+			.menuicon {
+				width: 14%;
+				padding-right: 10px;
+			}
+			
+			.mui-card-content {
+				height: 70px;
+				padding-left: 6%;
+			}
+			
+			.question-card {
+				background-color: rgb(219, 239, 222);
+			}
+			
+			a {
+				color: #757779;
+			}
+			
+			.mui-card-header {
+				font-size: 15px;
+			}
+			
+			.mui-card {
+				font-size: 12px;
+			}
+			
+			.mui-card-footer {
+				background-color: #eee;
+			}

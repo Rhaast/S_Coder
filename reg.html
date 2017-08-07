@@ -2,247 +2,329 @@
 <html class="ui-page-login">
 
 	<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-<title></title>
-<link href="css/mui.min.css" rel="stylesheet" />
-<!--<link href="css/style.css" rel="stylesheet" />-->
-<style>
-	.area {
-		margin: 20px auto 0px auto;
-	}
-	
-	.mui-input-group:first-child {
-		margin-top: 20px;
-	}
-	
-	.mui-input-group label {
-		width: 22%;
-		font-size: 13px;
-	}
-	
-	.mui-input-row label~input,
-	.mui-input-row label~select,
-	.mui-input-row label~textarea {
-		width: 78%;
-	}
-	
-	.mui-checkbox input[type=checkbox],
-	.mui-radio input[type=radio] {
-		top: 6px;
-	}
-	
-	.mui-content-padded {
-		margin-top: 25px;
-	}
-	
-	.mui-btn {
-		padding: 10px;
-	}
-</style>
-</head>
-
-<body>
-<header class="mui-bar mui-bar-nav">
-	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="mui.back()"></a>
-	<h1 class="mui-title">注册</h1>
-</header>
-<div class="mui-content">
-	<form class="mui-input-group">
-		<div class="mui-input-row">
-			<label>用户名</label>
-			<input id='username' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<!--<link href="css/style.css" rel="stylesheet" />-->
+		<style>
+			.area {
+				margin: 20px auto 0px auto;
+			}
 			
-		</div>
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+				font-size: 16px;
+			
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 17%;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			.mui-content {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				content: none;
+			}
+			
+			.mui-input-group .mui-input-row {
+				border-bottom: 2px solid;
+				margin-top: 10%;
+				width: 88%;
+				margin-left: 6%;
+			}
+			
+			.mui-input-group:before {
+				content: none;
+			}
+			
+			.mui-input-group:after {
+				content: none;
+			}
+			
+			.mui-input-group input,
+			.mui-input-group textarea {
+				font-size: 14px;
+				padding: 0;
+				padding-top: 12px;
+			}
+			
+			.sex {
+				margin-left: 6%;
+				margin-top: -1%;
+				position: relative;
+			}
 		
-		<div class="mui-input-row">
-			<label>密码</label>
-			<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+			.choose {
+				margin-left: 8%;
+			}
+			
+			.mui-btn-blue,
+			.mui-btn-primary,
+			input[type=submit] {
+				background-color: #5272F9;
+				border: 2px solid #000000;
+				width: 60%;
+				height: 40px;
+				line-height: 1;
+				border-radius: 30px;
+				font-size: 16px;
+				margin-left: 19%;
+			}
+			
+			label {
+				/*设置label的样式*/
+				width: 100%;
+				padding: 10px 0px;
+				display: block;
+				line-height: 20px;
+				position: relative;
+				font-weight: normal;
+			}
+			
+			.radio .option {
+				/*把优化后的按钮图片设置为该div的背景图片，把该div定位到原生样式的上方，遮盖住原生样式。*/
+				width: 16px;
+				height: 16px;
+				position: absolute;
+				top: 10px;
+				left: 0px;
+				background-size: cover;
+				background: url(img/check.png) no-repeat;
+				background-size: cover;
+			}
+			
+			.radio input[type="radio"] {
+				/*为了保险起见，把原生样式隐藏掉*/
+				display: inline-block;
+				margin-right: 15px;
+				opacity: 0;
+			}
+			
+			input[type="radio"]:checked+div {
+				/*当radiuo被选中时，把input下边的div标签的背景图片替换掉*/
+				background: url(img/checked.png) no-repeat;
+				background-size: cover;
+			}
+			
+			.radio {
+				float: left;
+			}
+			
+			.opt-text {
+				float: left;
+				font-weight: 600;
+			}
+			
+.tte{margin-top: -3%;}
+.sex{margin-top: 4%;}
+.sexly{font-weight: 600;}
+#createResult{color: red;margin-left: 36%;}
+		</style>
+	</head>
+
+	<body style="background-color: #FFFFFF;">
+
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+
+					<input id='username' type="text" class="mui-input-clear mui-input" placeholder="username">
+
+				</div>
+
+				<div class="mui-input-row">
+
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="password">
+				</div>
+				<div class="mui-input-row">
+
+					<input id='nickname' type="text" class="mui-input-clear mui-input" placeholder="nickname">
+				</div>
+				<div class="mui-input-row">
+
+					<input id='email' type="email" class="mui-input-clear mui-input" placeholder="email">
+				</div>
+
+				<div class="mui-input-row">
+
+					<input id='phone' type="email" class="mui-input-clear mui-input" placeholder="phone">
+				</div>
+
+				<div class="sex">
+					<label class="sexly">sex</label><br />
+			<div class="tte">	<div class="radio">
+						<label>
+        <input type="radio" name="sex" value="" />
+         <div class="option"></div><!--该div盛放的是优化后的按钮图片-->
+        
+    </label>
+					</div>
+					<label class="opt-text">Male</label>
+					<div class="radio">
+						<label>
+        <input type="radio" name="sex" value="" />
+        <div class="option"></div><!--该div盛放的是优化后的按钮图片-->
+        
+    </label>
+
+					</div>
+					<label class="opt-text">Female</label>
+					</div>	
+				</div>
+
+			</form>
+			<div class="mui-content-padded">
+				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">Sign up</button>
+			</div>
+			<div id="createResult">
+				<p></p>
+			</div>
 		</div>
-		<div class="mui-input-row">
-			<label>昵称</label>
-			<input id='nickname' type="text" class="mui-input-clear mui-input" placeholder="请输入昵称">
-		</div>
-		<div class="mui-input-row">
-			<label>邮箱</label>
-			<input id='email' type="text" class="mui-input-clear mui-input" placeholder="请输入邮箱" >
-		</div>
-		<div class="mui-input-row">
-			<label>性别</label>
-			<select id="Sex">
-				<option>女</option>
-				<option>男</option>
-			</select>
-		</div>
-		<div class="mui-input-row">
-			<label>手机号</label>
-			<input id='mobile' type="number" class="mui-input-clear mui-input" placeholder="请输入手机号">
-		</div>
-	</form>
-	<div class="mui-content-padded">
-		<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
-	</div>
-	<div id="createResult" style="color: red;margin-left: 30%;">
-		<p></p>
-	</div>
-</div>
-<script src="js/mui.min.js"></script>
-<!--<script src="js/app.js"></script>-->
+		<script src="js/mui.min.js"></script>
+		<!--<script src="js/app.js"></script>-->
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script>
+		<script>
+			(function($, doc, $$) {
+				$.init();
+				$.ready(function() {
+					var cityPicker = new $.PopPicker({
+						layer: 2
+					});
 
-//(function ($, doc, $$) {
-//              $.init();
-//              $.ready(function () {
-//                  var cityPicker = new $.PopPicker({
-//                      layer: 2
-//                  });
-//
-//                  $.ajax({
-//                      type: 'POST',
-//                      url: '@Url.Action("GetSelectList","Banji")',
-//                      data: JSON.stringify(jsonobj),
-//                      data: '',
-//                      dataType: 'json',
-//                      success:function(data) { 
-//                          cityPicker.setData(data);
-//                      },
-//                      error: function () {
-//                          alert('error');
-//                      }
-//                  });
-//
-//                  var showCityPickerButton = doc.getElementById('showCityPicker');
-//                  var cityResult = doc.getElementById('cityResult');
-//                  var students = doc.getElementById('students');
-//                  showCityPickerButton.addEventListener('tap', function(event) {
-//                      cityPicker.show(function (items) {
-//                          cityResult.innerText = "" + items[0].text + "->" + items[1].text;
-//                          $$('#students').html('');
-//                          $.ajax({
-//                              type: 'POST',
-//                              url: '@Url.Action("GetSelectList","Student")',
-//                              data: { banjiId: items[1].value },
-//                              dataType: 'json',
-//                              success: function (data) {
-//                                  console.log(data);
-//                                  var str = '';
-//                                  data.forEach(function (e) {
-//                                      str +='<li class="mui-table-view-cell mui-checkbox mui-left"><input name="checkbox" type="checkbox" value="'+ e.value +'">' + e.text + '</li>';
-//                                  })
-//                                  $$('#students').html(str);
-//                              },
-//                              error: function () {
-//                                  alert('error');
-//                              }
-//                          });
-//                          
-//                          //返回 false 可以阻止选择框的关闭
-//                          //return false;
-//                      });
-//                  }, false);
-//
-//              });
-//  })(mui, document, jQuery);
+					$.ajax({
+						type: 'POST',
+						url: '@Url.Action("GetSelectList","Banji")',
+						data: '',
+						dataType: 'json',
+						success: function(data) {
+							cityPicker.setData(data);
+						},
+						error: function() {
+							alert('error');
+						}
+					});
 
-mui('body').on('tap', 'button', function(data) {
-		
-					var username=$("#username").val().trim();
-					var password=$("#password").val().trim();
-					var nickname=$("#nickname").val().trim();
-					var email=$("#email").val().trim();
-					var mobile=$("#mobile").val().trim();
- $("#reg").click(function(all) {
-	var str = $("#username").val();
-	var ret = /[a-zA-Z0-9]{4,10}/;
-	if($("#username").val() == "") {
-		$("#createResult").html("请输入用户名");	
-		return ;
-	} else if(ret.test(str)) {
-		$("#createResult").html("");
-	} else {
-		$("#createResult").html("用户名格式错误");
-		return ;
-	};
-	var str = $("#password").val();
+					var showCityPickerButton = doc.getElementById('showCityPicker');
+					var cityResult = doc.getElementById('cityResult');
+					var students = doc.getElementById('students');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							cityResult.innerText = "" + items[0].text + "->" + items[1].text;
+							$$('#students').html('');
+							$.ajax({
+								type: 'POST',
+								url: '@Url.Action("GetSelectList","Student")',
+								data: { banjiId: items[1].value },
+								dataType: 'json',
+								success: function(data) {
+									console.log(data);
+									var str = '';
+									data.forEach(function(e) {
+										str += '<li class="mui-table-view-cell mui-checkbox mui-left"><input name="checkbox" type="checkbox" value="' + e.value + '">' + e.text + '</li>';
+									})
+									$$('#students').html(str);
+								},
+								error: function() {
+									alert('error');
+								}
+							});
 
-	if($("#password").val() == "") {
-		$("#createResult").html("请输入密码");
-		return ;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
 
-	};
-		var str = $("#nickname").val();
+				});
+			})(mui, document, jQuery);
 
-	if($("#nickname").val() == "") {
-		$("#createResult").html("请输入昵称");
-		return ;
+			mui('body').on('tap', 'button', function() {
+				var username = $("#username").val().trim();
+				var password = $("#password").val().trim();
+				var nickname = $("#nickname").val().trim();
+				var email = $("#email").val().trim();
+				var phone = $("#phone").val().trim();
+				//验证用户名
+				var str = $("#username").val();
+				var ret = /[a-zA-Z0-9]{4,10}/;
+				if(!username || username == "") {
+					$("#createResult").html("请输入用户名");
+					return;
+				} else if(ret.test(str)) {
+					$("#createResult").html("");
+				} else {
+					$("#createResult").html("用户名格式不对");
+					return;
+				}
+				if(!password || password == "") {
+					$("#createResult").html("请输入密码");
+					return;
+				}
+				if(!nickname || nickname == "") {
+					$("#createResult").html("请输入昵称");
+					return;
+				}
+				//邮箱验证
+				var str = $("#email").val();
+				var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+				if(!email || email == "") {
+					$("#createResult").html("请输入邮箱");
+					return;
+				} else if(ret.test(str)) {
+					$("#createResult").html("");
+				} else {
+					$("#createResult").html("邮箱格式不对");
+					return;
+				}
+				//手机号验证
+				var str = $("#phone").val();
+				var ret = /^1\d{10}$/;
+				if(!phone || phone == "") {
+					$("#createResult").html("请输入手机号");
+					return;
+				} else if(ret.test(str)) {
+					$("#createResult").html("");
+				} else {
+					$("#createResult").html("手机号格式不对");
+					return;
+				}
 
-	};
-	var str = $("#email").val();
-	var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
-	if($("#email").val() == "") {
-		$("#createResult").html("请输入邮箱");
-		return;
-	} else if(ret.test(str)) {
-		$("#createResult").html("");
-	} else {
-		$("#createResult").html("邮箱格式错误");
-           return ;
-	};
-	var str = $("#phone").val();
-	var ret = /^[\d]{5,20}$/;
-	if($("#phone").val() == "") {
-		$("#createResult").html("请输入手机号");
-		return ;
-	} else if(ret.test(str)) {
-		$("#createResult").html("");
-	} else {
-		$("#createResult").html("手机号格式错误");
-		 return ;
-	};
+				var jsonobj = {
+					"userName": username,
+					"password": password,
+					"nickName": nickname,
+					"email": email,
+					"mobile": phone,
+					"level": 1,
+					"score": 0
+				};
 
-
-});// 邮件
-    // 手机
-
-
-
-//if($("#username").val() == "") {
-//	$("#createResult").html("请输入用户名");
-//	return false;
-//}
-//if($("#password").val() == "") {
-//	$("#createResult").html("请输入密码");
-//	return false;
-//}
-//if($("#nickname").val() == "") {
-//	$("#createResult").html("请输入昵称");
-//	return false;
-//}
-//var str = $("#email").val();
-//var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
-//if($("#email").val() == "") {
-//	$("#createResult").html("请输入邮箱");
-//
-//}else {
-//	$("#createResult").html("格式错误");
-//};
-//if($("#phone").val() == "") {
-//	$("#createResult").html("请输入电话");
-//	return false;
-//}
-
-  var jsonobj = {"userName": username,
-						"password": password,
-						"nickName":nickname,
-						"email": email,
-						"mobile": mobile
-					};
-					
 				$.ajax({
 					type: "POST",
 					url: "http://112.74.187.146:8080/studyapp/user/add",
-					data:  JSON.stringify(jsonobj),
+					data: JSON.stringify(jsonobj),
 					dataType: "json",
 					contentType: "application/json",
 					success: function(data) {
@@ -253,8 +335,8 @@ mui('body').on('tap', 'button', function(data) {
 									popGesture: "close"
 								};
 								mui.openWindow({
-									id: "total",
-									url: "total.html",
+									id: "login",
+									url: "login.html",
 									styles: webview_style,
 									show: {
 										aniShow: true
@@ -264,11 +346,9 @@ mui('body').on('tap', 'button', function(data) {
 									}
 								});
 							});
-						} 
-						
-					      else{
-					      	 mui.alert("请填完，不要装批装怪")
-					      }
+						} else {
+							mui.alert(data.resultNote);
+						}
 					},
 					error: function(jqXHR) {
 						alert("发生错误：" + jqXHR.status);
@@ -276,10 +356,8 @@ mui('body').on('tap', 'button', function(data) {
 				});
 
 			});
-
-		
-	</script>
-	<!--<script>
+		</script>
+		<!--<script>
 	(function($, doc) {
 		$.init();
 		$.plusReady(function() {

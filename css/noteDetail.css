@@ -17,7 +17,7 @@ h1,h2,h3,h4,h5,h6,{font-weight: normal;}
 .header{position: relative;}
 .header .cover{position: absolute;top:0;}
 .header .back{width:5%;position: absolute;top: 4%;left: 3%;}
-.header .h1{font-family: arial;color:whitesmoke;text-transform: uppercase;font-weight: 600;font-size: 30px;letter-spacing: 3px;position: absolute;top: 75%;left: 50%;}
+.header .h1{font-family: arial;color:whitesmoke;text-transform: uppercase;font-weight: 600;font-size: 20px;letter-spacing: 3px;position: absolute;top: 75%;right: 2%;}
 .header p{font-family:"NotoSansHans-Regular";font-size: 12px;color: #999;position: absolute;top: 30%;left: 3%;}
 .header .touxiang{width:20%;position: absolute;top: 40%;left: 3%;}
 .header .message{width:100%;margin: 0 auto;position: absolute;top: 77%;left:50%;margin-left: -50%;}
@@ -37,7 +37,7 @@ h1,h2,h3,h4,h5,h6,{font-weight: normal;}
 }
 .note_title{
 	font-style: normal;
-	font-family: "微软雅黑";font-size: 18px;width: 30%;font-weight:600 ;padding-top: 2%;
+	font-family: "微软雅黑";font-size: 18px;width: 90%;font-weight:600 ;padding-top: 2%;
 }
 .note_content,.note_bottom{
 	font-family:"NotoSansHans-Regular";font-size: 16px;color: #999;
@@ -67,5 +67,20 @@ h4{
 #comments{
 	padding-top: 10px;
 }
+.com{
+	position: relative;
+}
 
-
+.comContent{
+	background-color: #ddd;
+	font-size: 19px;
+    margin: 0% 4%;
+}
+.comBottom{
+	position: absolute;
+	background-color: white;
+	font-size: 14px;
+    margin: 0% 4%;
+    bottom:1%;
+    right: 1%;
+}

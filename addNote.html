@@ -37,24 +37,34 @@
 			.mui-btn {
 				padding: 10px;
 			}
+			.mui-icon-back:before, .mui-icon-left-nav:before{content: none;}
+			.back{width: 16px;}
+			.mui-bar-nav{box-shadow: none;}
+			.mui-bar{background-color:#FFFFFF;height: 48px;}
+			.mui-content{background-color: #FFFFFF;}
+			.mui-title{line-height: 48px;font-size: 18px;font-weight: 600;}
+			.mui-bar .mui-icon{padding-top:14px;padding-bottom:14px;}
+			#title{margin-top: 5%;border:none;border-radius:initial;border-bottom: 2px solid;width: 94%;margin-left: 3%;padding: 0;font-size: 14px;padding-top: 12px;}
+			#textarea{border: none;border-radius: 3px;border: 2px solid;width:94%;margin: 0 auto;margin-top: 3%;margin-left: 3%;padding: 2px;height: 200px;}
+			.mui-input{margin-top: 7%;}
+			.mui-btn-blue, .mui-btn-primary, input[type=submit]{border: 2px solid #000000;background-color: #5272F9;height: 40px;width: 80%;border-radius: 30px;margin: 0 auto;margin-top: 10%;left: -23%;}
 		</style>
 	</head>
 
-	<body>
+	<body style="background-color: #FFFFFF;">
 		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">发表笔记</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="img/person_back.png" class="back"></a>
+			<h1 class="mui-title">Issue</h1>
 		</header>
 		<div class="mui-content">
 
-			<div class="mui-input-row">
-				<label>标题</label>
-				<input id='title' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+			<div class="mui-input" style="margin-top: 6%;">
+				<label style="margin-left: 3%;font-size: 16px;">Title</label>
+				<input id='title' type="text" class="mui-input-clear mui-input" placeholder="请输入标题">
 			</div>
-			<div class="mui-input-speech">
-				<label>内容</label>
-				<textarea id="textarea" rows="5" class="mui-input-clear mui-input" placeholder="因版本原因，暂时不能超过500字！">
-						</textarea>
+			<div class="mui-input">
+				<label style="margin-left: 3% ;font-size: 16px;">Conent</label>
+				<textarea id="textarea" rows="5" class="mui-input mui-input-clear" placeholder="请输入内容" style="font-size: 14px;"></textarea>
 			</div>
 
 			<div style="padding-left: 40%;">
@@ -71,7 +81,7 @@
 			mui('body').on('tap', 'button', function() {
 				ifLogin();
 				var userId = localStorage.getItem("userId");
-				var userName=localStorage.getItem("userName");
+				var userName=localStorage.getItem("nickName");
 				var title = $("#title").val().trim();
 				var textarea = $("#textarea").val().trim();
 				if(!title || title == '') {

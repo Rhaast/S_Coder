@@ -15,62 +15,7 @@
 		<script type="text/javascript" src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
 
-		<script type="text/javascript">
-			(function($, doc, $$) {
-				$.init();
-				$.ready(function() {
-					var cityPicker = new $.PopPicker({
-						layer: 2
-					});
 
-					$.ajax({
-						type: 'POST',
-						url: '@Url.Action("GetSelectList","Banji")',
-						data: '',
-						dataType: 'json',
-						success: function(data) {
-							cityPicker.setData(data);
-						},
-						error: function() {
-							alert('error');
-						}
-					});
-
-					var showCityPickerButton = doc.getElementById('showCityPicker');
-					var cityResult = doc.getElementById('cityResult');
-					var students = doc.getElementById('students');
-					showCityPickerButton.addEventListener('tap', function(event) {
-						cityPicker.show(function(items) {
-							cityResult.innerText = "" + items[0].text + "->" + items[1].text;
-							$$('#students').html('');
-							$.ajax({
-								type: 'POST',
-								url: '@Url.Action("GetSelectList","Student")',
-								data: {
-									banjiId: items[1].value
-								},
-								dataType: 'json',
-								success: function(data) {
-									console.log(data);
-									var str = '';
-									data.forEach(function(e) {
-										str += '<li class="mui-table-view-cell mui-checkbox mui-left"><input name="checkbox" type="checkbox" value="' + e.value + '">' + e.text + '</li>';
-									})
-									$$('#students').html(str);
-								},
-								error: function() {
-									alert('error');
-								}
-							});
-
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-
-				});
-			})(mui, document, jQuery);
-		</script>
 	</head>
 
 	<body>
@@ -78,9 +23,9 @@
 			<div class="header">
 				<img src="img/detail_bg.jpg" />
 				<div class="cover"><img src="img/detail_bg.jpg" /></div>
-				<div class="back"><img src="img/person_back.png"></div>
+				<div class="back" onclick="mui.back()"><img src="img/person_back.png"></div>
 				<h1 class="h1"></h1>
-				<div class="touxiang"><img src="img/person_touxiang.png"></div>
+				
 			</div>
 			<div class="main">
 				<div class="note">
@@ -98,26 +43,37 @@
 			<div id="comments">
 
 			</div>
-			<button type="button" class="mui-btn mui-btn-primary mui-btn-outlined">蓝色</button>
+			
 		</div>
+	<nav class="mui-bar mui-bar-tab">
+		<div class="mui-input-row" style="margin-top: 1%;">
+		<input id="comment" style="width: 80%;" type="text" class="mui-input" >
+			<button class="mui-btn-green" onclick="commit()">
+				回复
+			</button>
+			</div>
+		</nav>
 		<script type="text/javascript">
 			var id;
 			var userId;
+					mui.plusReady(function() {
+							ifLogin();
+							
+						});
 			$(function() {
 					id = getUrlParam('id');
 					getDetail();
 				})
 				//取得自己的笔记
 			function getDetail() {
-				ifLogin();
-				var nickName = localStorage.getItem("nickName");
-				var portrait = localStorage.getItem("portrait");
-				$(".h1").html(nickName);
-				$(".touxiang img").attr("src", portrait);
+				
+
+				
 				var now = new Date();
 				var mineUrl = "http://112.74.187.146:8080/studyapp/note/findById/" + id;
 				$.get(mineUrl, function(result) {
 					userId = result.detail.note.id;
+					$(".h1").html("by &nbsp"+result.detail.note.userName);
 					var str = "";
 					var createTime = new Date(result.detail.note.createTime);
 					var diffTime = (now - createTime) / (1000 * 60);
@@ -132,14 +88,48 @@
 					$(".note_content").html(result.detail.note.content);
 					$("#time").html("发布时间：" + createTime);
 					$("#commentNum").html("评论：" + result.detail.note.commentNum + "条");
-					$("h1").html(result.detail.note.userName);
+					
 
 					if (result.detail.comment.length > 0) {
-
+						var str="";
+						for(var i=0;i<result.detail.comment.length;i++){
+							str+="<div class='com'><div class='comContent'>"+result.detail.comment[i].content+"</div><div class='comBottom'>"+result.detail.comment[i].userName+"</div></div>"
+						}
+						$("#comments").html(str);
 					} else {
 						$("#comments").html("<h4>暂时没有评论哦！快来抢沙发~</h4>");
 					}
 				})
+			}
+			
+			function commit(){
+				var comment=$("#comment").val();
+				if(comment==undefined||comment==""||comment==null){
+					mui.alert("评论内容不能为空！");
+					return;
+				}
+				var param={"commentUser": localStorage.getItem("userId"),
+							"content": ,
+							"noteId": id,
+							"userName": localStorage.getItem("nickName")};
+				var url="http://112.74.187.146:8080/studyapp/comment/add";
+				$.ajax({
+					type: "POST",
+					url: url,
+					data: JSON.stringify(param),
+					dataType: "json",
+					contentType: "application/json",
+					success: function(result) {
+						if(result.result == 200) {
+							mui.alert('回复成功！', 'S_Coder', function() {
+								 location.reload();
+							});
+
+						} else {
+							mui.alert("网络错误！");
+						}
+					}
+					})
 			}
 		</script>
 	</body>

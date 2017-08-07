@@ -45,7 +45,7 @@
 					<a id='reg' href="reg.html"> sign up</a>
 				</div>
 				<div class="mui-content-padded">
-					<button id='login' class="mui-btn mui-btn-block mui-btn-primary">Login</button>
+					<button id='login' class="mui-btn mui-btn-block mui-btn-primary" type="button">Login</button>
 				</div>
 
 				<div class="mui-content-padded oauth-area">
@@ -131,6 +131,7 @@
 					},
 					function(result) {
 						if (result.result == 200) {
+							localStorage.clear();
 							//var id = this.getAttribute('href');
 							localStorage.setItem("userId", result.detail.id);
 							localStorage.setItem("password", password);

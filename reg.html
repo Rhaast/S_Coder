@@ -103,31 +103,7 @@
 				position: relative;
 				font-weight: normal;
 			}
-			
-			.radio .option {
-				/*把优化后的按钮图片设置为该div的背景图片，把该div定位到原生样式的上方，遮盖住原生样式。*/
-				width: 16px;
-				height: 16px;
-				position: absolute;
-				top: 10px;
-				left: 0px;
-				background-size: cover;
-				background: url(img/check.png) no-repeat;
-				background-size: cover;
-			}
-			
-			.radio input[type="radio"] {
-				/*为了保险起见，把原生样式隐藏掉*/
-				display: inline-block;
-				margin-right: 15px;
-				opacity: 0;
-			}
-			
-			input[type="radio"]:checked+div {
-				/*当radiuo被选中时，把input下边的div标签的背景图片替换掉*/
-				background: url(img/checked.png) no-repeat;
-				background-size: cover;
-			}
+
 			
 			.radio {
 				float: left;
@@ -152,7 +128,7 @@
 				<div class="mui-input-row">
 
 					<input id='username' type="text" class="mui-input-clear mui-input" placeholder="username">
-
+                    <div ></div>
 				</div>
 
 				<div class="mui-input-row">
@@ -173,29 +149,28 @@
 					<input id='phone' type="email" class="mui-input-clear mui-input" placeholder="phone">
 				</div>
 
-				<div class="sex">
-					<label class="sexly">sex</label><br />
-			<div class="tte">	<div class="radio">
-						<label>
-        <input type="radio" name="sex" value="" />
-         <div class="option"></div><!--该div盛放的是优化后的按钮图片-->
+<div class="sex">
+	<label class="sexly">sex</label><br />
+	<div class="tte">
+		<div class="radio">
+			<label>
+        <input type="radio" name="sex" value=1 id="sex"/>
         
     </label>
-					</div>
-					<label class="opt-text">Male</label>
-					<div class="radio">
-						<label>
-        <input type="radio" name="sex" value="" />
-        <div class="option"></div><!--该div盛放的是优化后的按钮图片-->
+		</div>
+		<label class="opt-text">Male</label>
+		<div class="radio">
+			<label>
+        <input type="radio" name="sex" value=0 id="sex"/>
         
     </label>
 
-					</div>
-					<label class="opt-text">Female</label>
-					</div>	
-				</div>
+		</div>
+		<label class="opt-text">Female</label>
+	</div>
+</div>
 
-			</form>
+</form>
 			<div class="mui-content-padded">
 				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">Sign up</button>
 			</div>
@@ -266,36 +241,61 @@
 				var nickname = $("#nickname").val().trim();
 				var email = $("#email").val().trim();
 				var phone = $("#phone").val().trim();
+				var sex = $("#sex").val().trim();
 				//验证用户名
 				var str = $("#username").val();
 				var ret = /[a-zA-Z0-9]{4,10}/;
 				if(!username || username == "") {
 					$("#createResult").html("请输入用户名");
+					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","none");
+					$("#username").css("border","2px solid red");
 					return;
 				} else if(ret.test(str)) {
 					$("#createResult").html("");
+					$("#username").css("border","none");
+					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","2px solid #000");
 				} else {
 					$("#createResult").html("用户名格式不对");
+					$("#username").css("border","2px solid red");
+					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","none");
 					return;
 				}
 				if(!password || password == "") {
 					$("#createResult").html("请输入密码");
+					$(".mui-input-group .mui-input-row").eq(1).css("border-bottom","none");
+					$("#password").css("border","2px solid red");
 					return;
+				}else{$("#createResult").html("");
+					$("#password").css("border","none");
+					$(".mui-input-group .mui-input-row").eq(1).css("border-bottom","2px solid #000");
+					
 				}
 				if(!nickname || nickname == "") {
 					$("#createResult").html("请输入昵称");
+					$(".mui-input-group .mui-input-row").eq(2).css("border-bottom","none");
+					$("#nickname").css("border","2px solid red");
 					return;
+				}else{$("#createResult").html("");
+					$("#nickname").css("border","none");
+					$(".mui-input-group .mui-input-row").eq(2).css("border-bottom","2px solid #000");
+					
 				}
 				//邮箱验证
 				var str = $("#email").val();
 				var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
 				if(!email || email == "") {
 					$("#createResult").html("请输入邮箱");
+					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
+					$("#email").css("border","2px solid red")
 					return;
 				} else if(ret.test(str)) {
 					$("#createResult").html("");
+					$("#email").css("border","none");
+					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","2px solid #000");
 				} else {
 					$("#createResult").html("邮箱格式不对");
+					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
+					$("#email").css("border","2px solid red")
 					return;
 				}
 				//手机号验证
@@ -303,14 +303,25 @@
 				var ret = /^1\d{10}$/;
 				if(!phone || phone == "") {
 					$("#createResult").html("请输入手机号");
+					$(".mui-input-group .mui-input-row").eq(4).css("border-bottom","none");
+					$("#phone").css("border","2px solid red");
 					return;
 				} else if(ret.test(str)) {
 					$("#createResult").html("");
+					$("#phone").css("border","none");
+					$(".mui-input-group .mui-input-row").eq(4).css("border-bottom","2px solid #000");
 				} else {
 					$("#createResult").html("手机号格式不对");
+					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
+					$("#phone").css("border","2px solid red");
 					return;
 				}
-
+                //选择性别
+                var val=$('input:radio[name="sex"]:checked').val();
+                if(val == null){
+                	$("#createResult").html("请选择性别");
+                	return;
+                }
 				var jsonobj = {
 					"userName": username,
 					"password": password,
@@ -318,7 +329,8 @@
 					"email": email,
 					"mobile": phone,
 					"level": 1,
-					"score": 0
+					"score": 0,
+					"sex":sex
 				};
 
 				$.ajax({

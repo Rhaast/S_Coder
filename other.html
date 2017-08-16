@@ -18,13 +18,15 @@
 				<div class="cover"><img src="img/person_cover.jpg" /></div>
 				<div class="back" onclick="mui.back()"><img src="img/person_back.png"></div>
 				<h1 class="h1"></h1>
-				<p>请尽情吩咐妲己，主人……</p>
-				<div class="touxiang"><img src="img/person_touxiang.png"></div>
-				<div class="job"><img src="img/person_sex.png">&nbsp;UI设计师</div>
+<!--				<p>请尽情吩咐妲己，主人……</p>-->
+						<div class="user_pic" style="margin: 10px;"   data-toggle="modal" data-target="#avatar-modal" >
+			<img src="img/person_touxiang.png"/>
+		</div>
+				<div class="job"><img src="img/person_sex.png"><!--&nbsp;UI设计师--></div>
 				<div class="message">
 					<div class="l">
-						<h2>ID：</h2>
-						<em>598652</em>
+						<h2>连续签到：</h2>
+						<em id="signCount"></em>
 					</div>
 					<div class="l">
 						<h2>得分</h2>
@@ -83,7 +85,8 @@
 						$(".h1").html(nickName);
 						$("#score").html(score);
 						$("#level").html(level);
-						$(".touxiang img").attr("src", portrait);
+						$("#signCount").html(result.detail.signCount+"天");
+						$(".user_pic img").attr("src", "http://112.74.187.146:8080/img/"+portrait);
 				})
 
 			}

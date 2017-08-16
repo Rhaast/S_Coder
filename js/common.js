@@ -57,3 +57,25 @@
 			}
 		});
 	})
+
+	function getUserInfo() {
+
+		$.ajax({
+			url: "http://112.74.187.146:8080/studyapp/user/findById/" + localStorage.getItem("userId"),
+			type: "GET",
+			dataType: 'json',
+			async: false,
+			contentType: "application/json",
+			success: function(result) {
+				if (result.result == 200) {
+					localStorage.setItem("nickName", result.detail.nickName);
+					localStorage.setItem("level", result.detail.level);
+					localStorage.setItem("score", result.detail.score);
+					localStorage.setItem("portrait", result.detail.portrait);
+					localStorage.setItem("signCount", result.detail.signCount);
+				} else {
+					mui.alert("网络错误！");
+				}
+			}
+		});
+	}

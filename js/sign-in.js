@@ -27,15 +27,15 @@ $(function() {
     		$('.signmonshow').html(''+itme+'月'+myDate.getFullYear()+'');  		
     		$.ajax({
 	            type: 'GET',
-	            url: 'http://localhost:81/data/xyjfdata.json',   //[1,2,3,4]
+	            url: 'http://112.74.187.146:8080/studyapp/sign/findByUser/'+ localStorage.getItem("userId"),   //[1,2,3,4]
 	            data: {},
 	            success: function (returnValue) {
-	                signed = returnValue.xyjf;
-	                if(itme == myMonth){
+	                signed = returnValue.detail;
+	                
 			       		for(var i = 0; i< signed.length;i++){
-				    		$(".jfdata" + signed[i]).addClass('able-sign');
+				    		$(".jfdata" + signed[i].day).addClass('able-sign');
 				    	}
-			       	}
+			       	
 	            }
 	       });			
     	}    	
@@ -55,10 +55,12 @@ $(function() {
                 $(".jfdata" + myDate.getDate()).addClass('able-sign');
                 $.ajax({
 		            type: 'POST',
-		            url: 'http://localhost:81/data/xyjfdata.json',
-		            data: {},
-		            success: function () {
+		            url: 'http://112.74.187.146:8080/studyapp/sign/add/'+localStorage.getItem("userId"),
+		            success: function (data) {
 		               _handle = false; 
+		               if (data.result != 200) {
+		               	mui.alert("今天您已经签过到了！","S_Coder");
+		               }
 		            }
 		       	});	              
             }           

@@ -236,92 +236,132 @@
 			})(mui, document, jQuery);
 
 			mui('body').on('tap', 'button', function() {
-				var username = $("#username").val().trim();
-				var password = $("#password").val().trim();
-				var nickname = $("#nickname").val().trim();
-				var email = $("#email").val().trim();
-				var phone = $("#phone").val().trim();
-				var sex = $("#sex").val().trim();
-				//验证用户名
-				var str = $("#username").val();
-				var ret = /[a-zA-Z0-9]{4,10}/;
-				if(!username || username == "") {
-					$("#createResult").html("请输入用户名");
-					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","none");
-					$("#username").css("border","2px solid red");
-					return;
-				} else if(ret.test(str)) {
-					$("#createResult").html("");
-					$("#username").css("border","none");
-					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","2px solid #000");
-				} else {
-					$("#createResult").html("用户名格式不对");
-					$("#username").css("border","2px solid red");
-					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","none");
-					return;
-				}
-				if(!password || password == "") {
-					$("#createResult").html("请输入密码");
-					$(".mui-input-group .mui-input-row").eq(1).css("border-bottom","none");
-					$("#password").css("border","2px solid red");
-					return;
-				}else{$("#createResult").html("");
-					$("#password").css("border","none");
-					$(".mui-input-group .mui-input-row").eq(1).css("border-bottom","2px solid #000");
-					
-				}
-				if(!nickname || nickname == "") {
-					$("#createResult").html("请输入昵称");
-					$(".mui-input-group .mui-input-row").eq(2).css("border-bottom","none");
-					$("#nickname").css("border","2px solid red");
-					return;
-				}else{$("#createResult").html("");
-					$("#nickname").css("border","none");
-					$(".mui-input-group .mui-input-row").eq(2).css("border-bottom","2px solid #000");
-					
-				}
-				//邮箱验证
-				var str = $("#email").val();
-				var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
-				if(!email || email == "") {
-					$("#createResult").html("请输入邮箱");
-					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
-					$("#email").css("border","2px solid red")
-					return;
-				} else if(ret.test(str)) {
-					$("#createResult").html("");
-					$("#email").css("border","none");
-					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","2px solid #000");
-				} else {
-					$("#createResult").html("邮箱格式不对");
-					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
-					$("#email").css("border","2px solid red")
-					return;
-				}
-				//手机号验证
-				var str = $("#phone").val();
-				var ret = /^1\d{10}$/;
-				if(!phone || phone == "") {
-					$("#createResult").html("请输入手机号");
-					$(".mui-input-group .mui-input-row").eq(4).css("border-bottom","none");
-					$("#phone").css("border","2px solid red");
-					return;
-				} else if(ret.test(str)) {
-					$("#createResult").html("");
-					$("#phone").css("border","none");
-					$(".mui-input-group .mui-input-row").eq(4).css("border-bottom","2px solid #000");
-				} else {
-					$("#createResult").html("手机号格式不对");
-					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
-					$("#phone").css("border","2px solid red");
-					return;
-				}
-                //选择性别
-                var val=$('input:radio[name="sex"]:checked').val();
-                if(val == null){
-                	$("#createResult").html("请选择性别");
-                	return;
-                }
+//				var username = $("#username").val().trim();
+//				var password = $("#password").val().trim();
+//				var nickname = $("#nickname").val().trim();
+//				var email = $("#email").val().trim();
+//				var phone = $("#phone").val().trim();
+//				var sex=$("input:radio[name='sex']:checked").val();
+//				//验证用户名
+//				var str = $("#username").val();
+//				var ret = /[a-zA-Z0-9]{4,10}/;
+//				if(!username || username == "") {
+//					$("#createResult").html("请输入用户名");
+//					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","none");
+//					$("#username").css("border","2px solid red");
+//					
+//					return;
+//				} else if(ret.test(str)) {
+//					$("#createResult").html("");
+//					$("#username").css("border","none");
+//					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","2px solid #000");
+//				} else {
+//					$("#createResult").html("用户名格式不对");
+//					$("#username").css("border","2px solid red");
+//					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","none");
+//					return;
+//				}
+//				if(!password || password == "") {
+//					$("#createResult").html("请输入密码");
+//					$(".mui-input-group .mui-input-row").eq(1).css("border-bottom","none");
+//					$("#password").css("border","2px solid red");
+//					return;
+//				}else{$("#createResult").html("");
+//					$("#password").css("border","none");
+//					$(".mui-input-group .mui-input-row").eq(1).css("border-bottom","2px solid #000");
+//					
+//				}
+//				if(!nickname || nickname == "") {
+//					$("#createResult").html("请输入昵称");
+//					$(".mui-input-group .mui-input-row").eq(2).css("border-bottom","none");
+//					$("#nickname").css("border","2px solid red");
+//					return;
+//				}else{$("#createResult").html("");
+//					$("#nickname").css("border","none");
+//					$(".mui-input-group .mui-input-row").eq(2).css("border-bottom","2px solid #000");
+//					
+//				}
+//				//邮箱验证
+//				var str = $("#email").val();
+//				var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+//				if(!email || email == "") {
+//					$("#createResult").html("请输入邮箱");
+//					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
+//					$("#email").css("border","2px solid red")
+//					return;
+//				} else if(ret.test(str)) {
+//					$("#createResult").html("");
+//					$("#email").css("border","none");
+//					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","2px solid #000");
+//				} else {
+//					$("#createResult").html("邮箱格式不对");
+//					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
+//					$("#email").css("border","2px solid red")
+//					return;
+//				}
+//				//手机号验证
+//				var str = $("#phone").val();
+//				var ret = /^1\d{10}$/;
+//				if(!phone || phone == "") {
+//					$("#createResult").html("请输入手机号");
+//					$(".mui-input-group .mui-input-row").eq(4).css("border-bottom","none");
+//					$("#phone").css("border","2px solid red");
+//					return;
+//				} else if(ret.test(str)) {
+//					$("#createResult").html("");
+//					$("#phone").css("border","none");
+//					$(".mui-input-group .mui-input-row").eq(4).css("border-bottom","2px solid #000");
+//				} else {
+//					$("#createResult").html("手机号格式不对");
+//					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
+//					$("#phone").css("border","2px solid red");
+//					return;
+//				}
+//              //选择性别
+//              var val=$('input:radio[name="sex"]:checked').val();
+//              if(val == null){
+//              	$("#createResult").html("请选择性别");
+//              	return;
+//              }
+var username = $("#username").val().trim();
+var str = $("#username").val();
+var ret = /[a-zA-Z0-9]{4,10}/;
+
+//密码
+var password = $("#password").val().trim();
+
+//昵称
+var nickname = $("#nickname").val().trim();
+
+
+//邮箱验证
+var email = $("#email").val().trim();
+var str = $("#email").val();
+var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+
+//手机号验证
+var phone = $("#phone").val().trim();
+var str = $("#phone").val();
+var ret = /^1\d{10}$/;
+
+//选择性别
+var sex=$("input:radio[name='sex']:checked").val();
+var val=$('input:radio[name="sex"]:checked').val();
+
+if(username == '' || password == '' || nickname == '' || email == ''|| phone == ''|| sex == null){
+$("#createResult").html("请填写字段");
+$(".mui-input-group .mui-input-row").css("border-bottom","none");
+$(".mui-input-group .mui-input-row").css("border","2px solid red");
+return;
+
+}
+
+
+else{
+$("form")[0].reset();
+}
+
+
 				var jsonobj = {
 					"userName": username,
 					"password": password,

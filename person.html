@@ -34,10 +34,10 @@
 				<div class="back" onclick="mui.back()"><img src="img/person_back.png"></div>
 				<h1 class="h1"></h1>
 	<!--<p>请尽情吩咐妲己，主人……</p>-->
-<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#avatar-modal" style="margin: 10px;">
+<!--<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#avatar-modal" style="margin: 10px;">
 				修改头像
-		</button>
-		<div class="user_pic" style="margin: 10px;" >
+		</button>-->
+		<div class="user_pic" style="margin: 10px;border: 2px solid #000000;"   data-toggle="modal" data-target="#avatar-modal" >
 			<img src="img/person_touxiang.png"/>
 		</div>
 
@@ -48,7 +48,7 @@
 					<form class="avatar-form">
 						<div class="modal-header">
 							<button class="close" data-dismiss="modal" type="button">&times;</button>
-							<h4 class="modal-title" id="avatar-modal-label">上传图片</h4>
+							<h4 class="modal-title" id="avatar-modal-label">修改头像</h4>
 						</div>
 						<div class="modal-body">
 							<div class="avatar-body">
@@ -70,32 +70,32 @@
 									</div>
 								</div>
 								<div class="row avatar-btns">
-									<div class="col-md-4">
+									<!--<div class="col-md-4">
 										<div class="btn-group">
 											<button class="btn btn-danger fa fa-undo" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"> 向左旋转</button>
 										</div>
 										<div class="btn-group">
 											<button class="btn  btn-danger fa fa-repeat" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"> 向右旋转</button>
 										</div>
-									</div>
+									</div>-->
 									<div class="col-md-5" style="text-align: right;">								
-										<button class="btn btn-danger fa fa-arrows" data-method="setDragMode" data-option="move" type="button" title="移动">
+										<!--<button class="btn btn-danger fa fa-arrows" data-method="setDragMode" data-option="move" type="button" title="移动">
 							            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)">
 							            </span>
 							          </button>
 							          <button type="button" class="btn btn-danger fa fa-search-plus" data-method="zoom" data-option="0.1" title="放大图片">
 							            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, 0.1)">
-							              <!--<span class="fa fa-search-plus"></span>-->
+							          <span class="fa fa-search-plus"></span>
 							            </span>
 							          </button>
 							          <button type="button" class="btn btn-danger fa fa-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片">
 							            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, -0.1)">
-							              <!--<span class="fa fa-search-minus"></span>-->
+							             <span class="fa fa-search-minus"></span>
 							            </span>
-							          </button>
-							          <button type="button" class="btn btn-danger fa fa-refresh" data-method="reset" title="重置图片">
+							          </button>-->
+							          <!--<button type="button" class="btn btn-danger fa fa-refresh" data-method="reset" title="重置图片">
 								            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;reset&quot;)" aria-describedby="tooltip866214">
-								       </button>
+								       </button>-->
 							        </div>
 									<div class="col-md-3">
 										<button class="btn btn-danger btn-block avatar-save fa fa-save" type="button" data-dismiss="modal"> 保存修改</button>
@@ -112,9 +112,8 @@
 <!--<div class="job"><img src="img/person_sex.png">&nbsp;UI设计师</div>-->
 				<div class="message">
 					<div class="l">
-						<img src="img/person_sex.png" style="width: 30%;">
-						<!--<h2>ID：</h2>
-						<em>598652</em>-->
+						<h2>连续签到：</h2>
+						<em id="signCount"></em>
 					</div>
 					<div class="l">
 						<h2>得分</h2>
@@ -149,78 +148,20 @@
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/common.js" ></script>
 		<script src="head/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/updatePortrait.js" ></script>
 		<script type="text/javascript">
-			$('#avatarInput').on('change', function(e) {
-				var filemaxsize = 1024 * 5;//5M
-				var target = $(e.target);
-				var Size = target[0].files[0].size / 1024;
-				if(Size > filemaxsize) {
-					alert('图片过大，请重新选择!');
-					$(".avatar-wrapper").childre().remove;
-					return false;
-				}
-				if(!this.files[0].type.match(/image.*/)) {
-					alert('请选择正确的图片!')
-				} else {
-					var filename = document.querySelector("#avatar-name");
-					var texts = document.querySelector("#avatarInput").value;
-					var teststr = texts; //你这里的路径写错了
-					testend = teststr.match(/[^\\]+\.[^\(]+/i); //直接完整文件名的
-					filename.innerHTML = testend;
-				}
 			
-			});
+//			document.addEventListener('plusready', function() {
+//				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+//
+//			});
+			mui.plusReady(function() { 
+				ifLogin();
 
-			$(".avatar-save").on("click", function() {
-				var img_lg = document.getElementById('imageHead');
-				// 截图小的显示框内的内容
-				html2canvas(img_lg, {
-					allowTaint: true,
-					taintTest: false,
-					onrendered: function(canvas) {
-						canvas.id = "mycanvas";
-						//生成base64图片数据
-						var dataUrl = canvas.toDataURL("image/jpeg");
-						var newImg = document.createElement("img");
-						newImg.src = dataUrl;
-						imagesAjax(dataUrl)
-					}
-				});
-			})
-			
-			function imagesAjax(src) {
-				var data = {};
-				data.img = src;
-				data.jid = $('#jid').val();
-				$.ajax({
-					url: "upload-logo.php",
-					data: data,
-					type: "POST",
-					dataType: 'json',
-					success: function(re) {
-						if(re.status == '1') {
-							$('.user_pic img').attr('src',"src" );
-						}
-					}
-				});
-			}
-			
-			
-			
-			
-			
-			
-			
-			document.addEventListener('plusready', function() {
-				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-
-			});
-	mui.plusReady(function() { 
-		ifLogin();
-	}); 
+			}); 
 	
 			$(function() {
-				
+				getUserInfo();
 				getMine();
 			})
 			var username;
@@ -233,7 +174,8 @@
 				$(".h1").html(nickName);
 				$("#score").html(score);
 				$("#level").html(level);
-				$(".touxiang img").attr("src", portrait);
+				$("#signCount").html(localStorage.getItem("signCount")+"天");
+				$(".user_pic img").attr("src", "http://112.74.187.146:8080/img/"+portrait);
 			}
 			mui.init();
 			mui('body').on('tap', 'a', function() {

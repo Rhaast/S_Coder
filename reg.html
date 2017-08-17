@@ -117,7 +117,25 @@
 .tte{margin-top: -3%;}
 .sex{margin-top: 4%;}
 .sexly{font-weight: 600;}
-#createResult{color: red;margin-left: 36%;}
+#createResult{color: red;position:absolute;    margin-left: 70%;
+    top: 47%;
+    font-size: 12px;}
+#createResult1{color: red;position:absolute;    margin-left: 70%;
+    top: 47%;
+    font-size: 12px;}
+#createResult2{color: red;position:absolute;    margin-left: 70%;
+    top: 47%;
+    font-size: 12px;}
+#createResult3{color: red;position:absolute;    margin-left: 70%;
+    top: 47%;
+    font-size: 12px;}
+#createResult4{color: red;position:absolute;    margin-left: 70%;
+    top: 47%;
+    font-size: 12px;}
+#createResult5{color: red;position:absolute;    margin-left: 70%;
+    top: 14%;
+    font-size: 12px;}
+
 		</style>
 	</head>
 
@@ -128,25 +146,39 @@
 				<div class="mui-input-row">
 
 					<input id='username' type="text" class="mui-input-clear mui-input" placeholder="username">
-                    <div ></div>
+							<div id="createResult">
+				<p></p>
+			</div>
 				</div>
 
 				<div class="mui-input-row">
 
 					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="password">
+									<div id="createResult1">
+				<p></p>
+			</div>
 				</div>
 				<div class="mui-input-row">
 
 					<input id='nickname' type="text" class="mui-input-clear mui-input" placeholder="nickname">
+									<div id="createResult2">
+				<p></p>
+			</div>
 				</div>
 				<div class="mui-input-row">
 
 					<input id='email' type="email" class="mui-input-clear mui-input" placeholder="email">
+									<div id="createResult3">
+				<p></p>
+			</div>
 				</div>
 
 				<div class="mui-input-row">
 
 					<input id='phone' type="email" class="mui-input-clear mui-input" placeholder="phone">
+									<div id="createResult4">
+				<p></p>
+			</div>
 				</div>
 
 <div class="sex">
@@ -168,15 +200,16 @@
 		</div>
 		<label class="opt-text">Female</label>
 	</div>
+									<div id="createResult5">
+				<p></p>
+			</div>
 </div>
 
 </form>
 			<div class="mui-content-padded">
 				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">Sign up</button>
 			</div>
-			<div id="createResult">
-				<p></p>
-			</div>
+	
 		</div>
 		<script src="js/mui.min.js"></script>
 		<!--<script src="js/app.js"></script>-->
@@ -236,130 +269,84 @@
 			})(mui, document, jQuery);
 
 			mui('body').on('tap', 'button', function() {
-//				var username = $("#username").val().trim();
-//				var password = $("#password").val().trim();
-//				var nickname = $("#nickname").val().trim();
-//				var email = $("#email").val().trim();
-//				var phone = $("#phone").val().trim();
-//				var sex=$("input:radio[name='sex']:checked").val();
-//				//验证用户名
-//				var str = $("#username").val();
-//				var ret = /[a-zA-Z0-9]{4,10}/;
-//				if(!username || username == "") {
-//					$("#createResult").html("请输入用户名");
-//					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","none");
-//					$("#username").css("border","2px solid red");
-//					
-//					return;
-//				} else if(ret.test(str)) {
-//					$("#createResult").html("");
-//					$("#username").css("border","none");
-//					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","2px solid #000");
-//				} else {
-//					$("#createResult").html("用户名格式不对");
-//					$("#username").css("border","2px solid red");
-//					$(".mui-input-group .mui-input-row").eq(0).css("border-bottom","none");
-//					return;
-//				}
-//				if(!password || password == "") {
-//					$("#createResult").html("请输入密码");
-//					$(".mui-input-group .mui-input-row").eq(1).css("border-bottom","none");
-//					$("#password").css("border","2px solid red");
-//					return;
-//				}else{$("#createResult").html("");
-//					$("#password").css("border","none");
-//					$(".mui-input-group .mui-input-row").eq(1).css("border-bottom","2px solid #000");
-//					
-//				}
-//				if(!nickname || nickname == "") {
-//					$("#createResult").html("请输入昵称");
-//					$(".mui-input-group .mui-input-row").eq(2).css("border-bottom","none");
-//					$("#nickname").css("border","2px solid red");
-//					return;
-//				}else{$("#createResult").html("");
-//					$("#nickname").css("border","none");
-//					$(".mui-input-group .mui-input-row").eq(2).css("border-bottom","2px solid #000");
-//					
-//				}
-//				//邮箱验证
-//				var str = $("#email").val();
-//				var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
-//				if(!email || email == "") {
-//					$("#createResult").html("请输入邮箱");
-//					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
-//					$("#email").css("border","2px solid red")
-//					return;
-//				} else if(ret.test(str)) {
-//					$("#createResult").html("");
-//					$("#email").css("border","none");
-//					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","2px solid #000");
-//				} else {
-//					$("#createResult").html("邮箱格式不对");
-//					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
-//					$("#email").css("border","2px solid red")
-//					return;
-//				}
-//				//手机号验证
-//				var str = $("#phone").val();
-//				var ret = /^1\d{10}$/;
-//				if(!phone || phone == "") {
-//					$("#createResult").html("请输入手机号");
-//					$(".mui-input-group .mui-input-row").eq(4).css("border-bottom","none");
-//					$("#phone").css("border","2px solid red");
-//					return;
-//				} else if(ret.test(str)) {
-//					$("#createResult").html("");
-//					$("#phone").css("border","none");
-//					$(".mui-input-group .mui-input-row").eq(4).css("border-bottom","2px solid #000");
-//				} else {
-//					$("#createResult").html("手机号格式不对");
-//					$(".mui-input-group .mui-input-row").eq(3).css("border-bottom","none");
-//					$("#phone").css("border","2px solid red");
-//					return;
-//				}
-//              //选择性别
-//              var val=$('input:radio[name="sex"]:checked').val();
-//              if(val == null){
-//              	$("#createResult").html("请选择性别");
-//              	return;
-//              }
-var username = $("#username").val().trim();
-var str = $("#username").val();
-var ret = /[a-zA-Z0-9]{4,10}/;
+				var username = $("#username").val().trim();
+				var password = $("#password").val().trim();
+				var nickname = $("#nickname").val().trim();
+				var email = $("#email").val().trim();
+				var phone = $("#phone").val().trim();
+				var sex=$("input:radio[name='sex']:checked").val();
+				//验证用户名
+				var str = $("#username").val();
+				var ret = /[a-zA-Z0-9]{4,10}/;
+				if(!username || username == "") {
+					$("#createResult").html("请输入用户名");
 
-//密码
-var password = $("#password").val().trim();
+					
+					return;
+				} else if(ret.test(str)) {
+					$("#createResult").html("");
 
-//昵称
-var nickname = $("#nickname").val().trim();
+				} else {
+					$("#createResult").html("用户名格式不对");
+
+					return;
+				}
+				if(!password || password == "") {
+					$("#createResult1").html("请输入密码");
+
+					return;
+				}else{$("#createResult1").html("");
+
+					
+				}
+				if(!nickname || nickname == "") {
+					$("#createResult2").html("请输入昵称");
+
+					return;
+				}else{$("#createResult2").html("");
+
+					
+				}
+				//邮箱验证
+				var str = $("#email").val();
+				var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+				if(!email || email == "") {
+					$("#createResult3").html("请输入邮箱");
+
+					return;
+				} else if(ret.test(str)) {
+					$("#createResult3").html("");
+
+				} else {
+					$("#createResult3").html("邮箱格式不对");
+
+					return;
+				}
+				//手机号验证
+				var str = $("#phone").val();
+				var ret = /^1\d{10}$/;
+				if(!phone || phone == "") {
+					$("#createResult4").html("请输入手机号");
+
+					return;
+				} else if(ret.test(str)) {
+					$("#createResult4").html("");
+
+				} else {
+					$("#createResult4").html("手机号格式不对");
+
+					return;
+				}
+                //选择性别
+                var val=$('input:radio[name="sex"]:checked').val();
+                if(val == null){
+                	$("#createResult5").html("请选择性别");
+                	return;
+                }
 
 
-//邮箱验证
-var email = $("#email").val().trim();
-var str = $("#email").val();
-var ret = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
-
-//手机号验证
-var phone = $("#phone").val().trim();
-var str = $("#phone").val();
-var ret = /^1\d{10}$/;
-
-//选择性别
-var sex=$("input:radio[name='sex']:checked").val();
-var val=$('input:radio[name="sex"]:checked').val();
-
-if(username == '' || password == '' || nickname == '' || email == ''|| phone == ''|| sex == null){
-$("#createResult").html("请填写字段");
-$(".mui-input-group .mui-input-row").css("border-bottom","none");
-$(".mui-input-group .mui-input-row").css("border","2px solid red");
-return;
-
-}
 
 
-else{
-$("form")[0].reset();
-}
 
 
 				var jsonobj = {
